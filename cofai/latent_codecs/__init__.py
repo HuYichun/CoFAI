@@ -9,6 +9,7 @@ from .orfc import OrthoRotationFeatureCodec
 from .raw_dtype import RawDtypeCodec
 from .fixed_gaussian import FixedGaussianCodec
 from .vq_ufc import VQUFCFeatureCodec
+from .dsvfc import DSVFC
 
 __all__ = [
     "FeatureScaleHyperprior",
@@ -18,6 +19,7 @@ __all__ = [
     "RawDtypeCodec",
     "FixedGaussianCodec",
     "VQUFCFeatureCodec",
+    "DSVFC",
     "VitUnionLatentCodec",
     "VitUnionLatentCodecWithCtx",
     "VitSeparateLatentCodec",
