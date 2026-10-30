@@ -88,6 +88,7 @@ optional = true
 [tool.poetry.group.docs.dependencies]
 zensical = "0.0.67"
 mkdocstrings-python = "2.0.9"
+pymdown-extensions = "<12.2"
 
 [[tool.poetry.source]]
 name = "pytorch-cu124"
