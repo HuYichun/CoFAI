@@ -16,8 +16,10 @@ M2474：在 ADE20K-C 语义分割和 AG-ReID-C 跨视角重识别上进行在线
 | ADE20K | [ADE20K.zip](https://medialab.sjtu.edu.cn/files/CoFAI-share/data/ADE20K.zip) |
 | DINOv3 ViT-L/16 | [主干网络权重](https://medialab.sjtu.edu.cn/files/CoFAI-share/weights/dinov3/backbone/dinov3_vitl16_pretrain_lvd1689m.safetensors) |
 | ADE20K 线性分割头 | [分割头权重](https://medialab.sjtu.edu.cn/files/CoFAI-share/weights/dinov3/semseg_head/dinov3_vitl16_semseg_ade20k_linear_head.pth) |
-| AG-ReID | 待上传 |
-| VDT 权重、ProTRAC 源统计 | 待上传 |
+| AG-ReID | [AG-ReID.zip](https://medialab.sjtu.edu.cn/files/CoFAI-share/data/AG-ReID.zip) |
+| VDT | [模型权重](https://medialab.sjtu.edu.cn/files/CoFAI-share/weights/protrac/agreid/vdt.pth) |
+| 分割源统计 | [全局](https://medialab.sjtu.edu.cn/files/CoFAI-share/weights/protrac/ade20k/global_stats.pt)、[类别](https://medialab.sjtu.edu.cn/files/CoFAI-share/weights/protrac/ade20k/class_stats.pt)、[区域](https://medialab.sjtu.edu.cn/files/CoFAI-share/weights/protrac/ade20k/region_stats.pt) |
+| 重识别源统计 | [源统计](https://medialab.sjtu.edu.cn/files/CoFAI-share/weights/protrac/agreid/stats.pt) |
 
 准备后的目录：
 
