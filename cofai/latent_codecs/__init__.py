@@ -4,6 +4,7 @@ from .vtc import VisualTokenCodec, VTCLight
 from .vtm import VtmCodec, VtmFeatureCodec, VtmLatentCodec
 from .mlore_codec import MLoREFeatureCodec, MLoREFeatureCodecLight
 from .bypass import BypassLatentCodec
+from .pca_align import PCAAlignLatentCodec
 from .vqfc import VQFeatureCodec
 from .orfc import OrthoRotationFeatureCodec
 from .raw_dtype import RawDtypeCodec
@@ -12,6 +13,7 @@ from .vq_ufc import VQUFCFeatureCodec
 from .dsvfc import DSVFC
 
 __all__ = [
+    "PCAAlignLatentCodec",
     "FeatureScaleHyperprior",
     "BypassLatentCodec",
     "VQFeatureCodec",

@@ -1,0 +1,34 @@
+# @package _global_
+defaults:
+  - /plan/mmstar__qwen3vl-8b-ins-slot9__Bypass__vqa
+  - _self_
+
+name: mmstar__qwen3vl-8b-ins-slot9__pca-align__vqa
+description: "AI M2510 PCA-align; Qwen3-VL-8B-Instruct slot9; MMStar; 65-QP VBR checkpoint"
+
+model:
+  qwen_codec:
+    type: cofai.latent_codecs.PCAAlignLatentCodec
+    h_dim: 1152
+    y_dim: 256
+    z_dim: 48
+    groups: 32
+
+# Codec-only inference state; pretrained backbone is loaded by the CTC plan.
+# Includes the author's updated quantiles/CDFs and checkpoint PCA row-basis.
+load:
+  path: ${PROJECT_ROOT}/weights/pca_align/qwen3vl-8b-ins-slot9--pca-align-vbr-epoch005-inference.pth
+  strict: false
+  weights_only: true
+
+args:
+  real: true
+  multi_run: true
+
+multi_run:
+  0: null
+  8: null
+  16: null
+  32: null
+  48: null
+  64: null
