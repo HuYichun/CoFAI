@@ -9,40 +9,32 @@ M2474：在 ADE20K-C 语义分割和 AG-ReID-C 跨视角重识别上进行在线
 
 ## 数据与权重
 
-资源统一放在 [CoFAI 共享站](https://medialab.sjtu.edu.cn/files/CoFAI-share/)。
-
-| 资源 | 下载 |
-|---|---|
-| ADE20K | [ADE20K.zip](https://medialab.sjtu.edu.cn/files/CoFAI-share/data/ADE20K.zip) |
-| DINOv3 ViT-L/16 | [主干网络权重](https://medialab.sjtu.edu.cn/files/CoFAI-share/weights/dinov3/backbone/dinov3_vitl16_pretrain_lvd1689m.safetensors) |
-| ADE20K 线性分割头 | [分割头权重](https://medialab.sjtu.edu.cn/files/CoFAI-share/weights/dinov3/semseg_head/dinov3_vitl16_semseg_ade20k_linear_head.pth) |
-| AG-ReID | [AG-ReID.zip](https://medialab.sjtu.edu.cn/files/CoFAI-share/data/AG-ReID.zip) |
-| VDT | [模型权重](https://medialab.sjtu.edu.cn/files/CoFAI-share/weights/protrac/agreid/vdt.pth) |
-| 分割源统计 | [全局](https://medialab.sjtu.edu.cn/files/CoFAI-share/weights/protrac/ade20k/global_stats.pt)、[类别](https://medialab.sjtu.edu.cn/files/CoFAI-share/weights/protrac/ade20k/class_stats.pt)、[区域](https://medialab.sjtu.edu.cn/files/CoFAI-share/weights/protrac/ade20k/region_stats.pt) |
-| 重识别源统计 | [源统计](https://medialab.sjtu.edu.cn/files/CoFAI-share/weights/protrac/agreid/stats.pt) |
-
-准备后的目录：
+请从 [CoFAI 共享站](https://medialab.sjtu.edu.cn/files/CoFAI-share/) 下载 `data/ADE20K.zip`、`data/AG-ReID.zip`，以及以下模型权重和 ProTRAC 源统计。数据集解压后，按以下目录放置：
 
 ```text
-data/
-  ADEChallengeData2016/
-    images/validation/
-    annotations/validation/
-  AG-ReID/
-    query_all_c0/
-    query_all_c3/
-    bounding_box_test_all_c0/
-    bounding_box_test_all_c3/
-weights/
-  dinov3/
-    backbone/dinov3_vitl16_pretrain_lvd1689m.safetensors
-    semseg_head/dinov3_vitl16_semseg_ade20k_linear_head.pth
-  protrac/
-    ade20k/{global_stats,class_stats,region_stats}.pt
-    agreid/{vdt.pth,stats.pt}
+CoFAI/
+├── data/
+│   ├── ADEChallengeData2016/
+│   │   ├── images/validation/
+│   │   └── annotations/validation/
+│   └── AG-ReID/
+│       ├── query_all_c0/
+│       ├── query_all_c3/
+│       ├── bounding_box_test_all_c0/
+│       └── bounding_box_test_all_c3/
+└── weights/
+    ├── dinov3/
+    │   ├── backbone/dinov3_vitl16_pretrain_lvd1689m.safetensors
+    │   └── semseg_head/dinov3_vitl16_semseg_ade20k_linear_head.pth
+    └── protrac/
+        ├── ade20k/
+        │   ├── global_stats.pt
+        │   ├── class_stats.pt
+        │   └── region_stats.pt
+        └── agreid/
+            ├── vdt.pth
+            └── stats.pt
 ```
-
-源统计使用提供的文件，配置中的路径可自行修改。
 
 ## 生成扰动数据
 
