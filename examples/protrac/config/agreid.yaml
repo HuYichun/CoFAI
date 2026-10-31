@@ -1,8 +1,8 @@
 task: reid
 device: cuda
-data_root: ${protrac_root:}/data/AG-ReID
-checkpoint: ${protrac_root:}/weights/protrac/agreid/vdt.pth
-stats: ${protrac_root:}/weights/protrac/agreid/stats.pt
+data_root: ${oc.env:PROJECT_ROOT}/data/AG-ReID
+checkpoint: ${oc.env:PROJECT_ROOT}/weights/protrac/agreid/vdt.pth
+stats: ${oc.env:PROJECT_ROOT}/weights/protrac/agreid/stats.pt
 image_size: [256, 128]
 slot: 11
 batch_size: 64
@@ -18,4 +18,4 @@ calibration:
   rank: 16
   projection_weight: -1.0
   clip: 0.60
-output: ${protrac_root:}/logs/protrac/reid
+output: ${oc.env:PROJECT_ROOT}/logs/protrac/reid

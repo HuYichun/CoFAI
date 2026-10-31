@@ -1,10 +1,11 @@
 from pathlib import Path
 
+from dotenv import load_dotenv
 from omegaconf import OmegaConf
 
 ROOT = Path(__file__).resolve().parents[3]
-OmegaConf.register_new_resolver("protrac_root", lambda: str(ROOT), replace=True)
 
 
 def load_config(path):
+    load_dotenv(ROOT / ".env", override=True, encoding="utf-8")
     return OmegaConf.load(path)

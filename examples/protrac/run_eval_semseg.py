@@ -12,7 +12,7 @@ from cofai.metrics.cv_metrics import MeanIoUMetric
 from examples.protrac.config import load_config
 from examples.protrac.evaluation import infer, save_results
 from examples.protrac.model import build_codec_model
-from examples.protrac.semseg.dataset import ADE20KCorruption
+from examples.protrac.semseg.dataset import build_dataset
 
 
 @torch.inference_mode()
@@ -33,11 +33,17 @@ def main():
     model = build_codec_model(cfg, device)
     results = {}
     for corruption in cfg.corruptions:
-        dataset = ADE20KCorruption(cfg.data_root, cfg.corruption_root, corruption, cfg.severity)
+        dataset = build_dataset(cfg.data_root, cfg.corruption_root, corruption, cfg.severity)
         model.backbone.reset()
         metric = MeanIoUMetric(150)
-        for image, target, roi in tqdm(dataset, total=len(dataset), desc=corruption):
-            image = image.unsqueeze(0).to(device)
+        for sample in tqdm(dataset, total=len(dataset), desc=corruption):
+            image = sample["img"].contiguous().unsqueeze(0).to(device)
+            target = sample["semseg"].squeeze(0).long()
+            valid = sample["meta"]["valid_roi"]
+            roi = (
+                slice(valid["top"], valid["top"] + valid["height"]),
+                slice(valid["left"], valid["left"] + valid["width"]),
+            )
             with torch.autocast(device_type=device.type, dtype=torch.float16, enabled=device.type == "cuda"):
                 logits = infer(model, image, "semseg", args.real_codec, valid_roi=roi)
                 logits = F.interpolate(logits, size=image.shape[-2:], mode="bilinear", align_corners=False)

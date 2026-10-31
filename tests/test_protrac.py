@@ -1,4 +1,6 @@
 from types import SimpleNamespace
+import subprocess
+import sys
 
 import torch
 from torch import nn
@@ -9,6 +11,22 @@ from cofai.latent_codecs.raw_dtype import RawDtypeCodec
 from cofai.models import CommonFeatureCodecModel
 from cofai.token_grouping.protrac import ProTRACStats
 from examples.protrac.semseg.model import ProTRACSegBackbone
+
+
+def test_evaluation_import_preserves_torch_runtime():
+    subprocess.run(
+        [
+            sys.executable,
+            "-c",
+            "import torch; "
+            "torch.backends.cudnn.deterministic = False; "
+            "torch.set_num_threads(2); "
+            "import examples.protrac.evaluation; "
+            "assert not torch.backends.cudnn.deterministic; "
+            "assert torch.get_num_threads() == 2",
+        ],
+        check=True,
+    )
 
 
 def test_sample_statistics_update_and_reset():

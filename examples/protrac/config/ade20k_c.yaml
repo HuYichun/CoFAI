@@ -1,13 +1,13 @@
 task: semseg
 device: cuda
-data_root: ${protrac_root:}/data/ADEChallengeData2016
-corruption_root: ${protrac_root:}/data/ADE20K_val-c
-backbone: ${protrac_root:}/weights/dinov3/backbone/dinov3_vitl16_pretrain_lvd1689m.safetensors
-head: ${protrac_root:}/weights/dinov3/semseg_head/dinov3_vitl16_semseg_ade20k_linear_head.pth
+data_root: ${oc.env:PROJECT_ROOT}/data/ADEChallengeData2016
+corruption_root: ${oc.env:PROJECT_ROOT}/data/ADE20K_val-c
+backbone: ${oc.env:PROJECT_ROOT}/weights/dinov3/backbone/dinov3_vitl16_pretrain_lvd1689m.safetensors
+head: ${oc.env:PROJECT_ROOT}/weights/dinov3/semseg_head/dinov3_vitl16_semseg_ade20k_linear_head.pth
 stats:
-  global_stats: ${protrac_root:}/weights/protrac/ade20k/global_stats.pt
-  class_stats: ${protrac_root:}/weights/protrac/ade20k/class_stats.pt
-  region_stats: ${protrac_root:}/weights/protrac/ade20k/region_stats.pt
+  global_stats: ${oc.env:PROJECT_ROOT}/weights/protrac/ade20k/global_stats.pt
+  class_stats: ${oc.env:PROJECT_ROOT}/weights/protrac/ade20k/class_stats.pt
+  region_stats: ${oc.env:PROJECT_ROOT}/weights/protrac/ade20k/region_stats.pt
 slot: 23
 severity: 5
 corruptions: [gaussian_noise, shot_noise, impulse_noise, defocus_blur, glass_blur, motion_blur, zoom_blur, snow, frost, fog, brightness, contrast, elastic_transform, pixelate, jpeg_compression]
@@ -36,4 +36,4 @@ calibration:
   moment_clip: 0.30
   moment_prior: 8
   min_update_mass: 4
-output: ${protrac_root:}/logs/protrac/semseg
+output: ${oc.env:PROJECT_ROOT}/logs/protrac/semseg
