@@ -9,7 +9,7 @@ from cofai.backbone.vdt import VDTBackbone
 from cofai.heads.vdt_reid import VDTReIDHead
 from cofai.latent_codecs.raw_dtype import RawDtypeCodec
 from cofai.models import CommonFeatureCodecModel
-from cofai.token_grouping.protrac import ProTRACStats
+from examples.protrac.calibration import ProTRACStats
 from examples.protrac.semseg.model import ProTRACSegBackbone
 
 

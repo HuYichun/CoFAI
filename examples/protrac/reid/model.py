@@ -1,7 +1,7 @@
 import torch
 
 from cofai.backbone.vdt import VDTBackbone
-from cofai.token_grouping.protrac import (
+from examples.protrac.calibration import (
     ProTRACStats,
     clip_delta,
     projection_delta,

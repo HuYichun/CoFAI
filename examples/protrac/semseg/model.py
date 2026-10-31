@@ -3,7 +3,7 @@ from torch import nn
 from torch.nn import functional as F
 
 from cofai.backbone import Dinov3TimmBackbone
-from cofai.token_grouping.protrac import (
+from examples.protrac.calibration import (
     ProTRACStats,
     clip_delta,
     projection_delta,
